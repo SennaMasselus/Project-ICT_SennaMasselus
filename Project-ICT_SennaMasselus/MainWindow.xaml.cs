@@ -65,20 +65,27 @@ namespace Project_ICT_SennaMasselus
         }
         private void Disconnect_btn_Click(object sender, RoutedEventArgs e)
         {
-            Disconnect();
-            MessageBox.Show("Succesfully Disconnected.");
+            if (port.IsOpen)
+            {
+                Disconnect();
+                MessageBox.Show("Succesfully Disconnected.");
+            }
+            else
+            {
+                MessageBox.Show("Already Disconnected");
+            }
         }
 
         private void Disconnect() // Methode om de verbinding te verbreken
         {
-            // Try-catch niet nodig, omdat er geen fouten kunnen optreden bij het sluiten van de poort
-            timer.Stop(); pbTijd.Value = 0;
-            port.Write("\u0000");
-            port.Close(); // Sluit de poort
-            port.PortName = "COM"; // Stel de poortnaam in op COM, dit is de standaardwaarde
-            lstports.SelectedIndex = -1; // Dit zorgt ervoor dat er niets is geselecteerd
-            ConnectionTextBlock.Text = "Disconnected"; // Change the text
-            ConnectionTextBlock.Foreground = new SolidColorBrush(Colors.Red); // Change the foreground color
+                // Try-catch niet nodig, omdat er geen fouten kunnen optreden bij het sluiten van de poort
+                timer.Stop(); pbTijd.Value = 0;
+                port.Write("\u0000");
+                port.Close(); // Sluit de poort
+                port.PortName = "COM"; // Stel de poortnaam in op COM, dit is de standaardwaarde
+                lstports.SelectedIndex = -1; // Dit zorgt ervoor dat er niets is geselecteerd
+                ConnectionTextBlock.Text = "Disconnected"; // Change the text
+                ConnectionTextBlock.Foreground = new SolidColorBrush(Colors.Red); // Change the foreground color
         }
 
 
@@ -94,7 +101,7 @@ namespace Project_ICT_SennaMasselus
                 }
                 else
                 {
-                    MessageBox.Show("Not Connected");
+                    MessageBox.Show("Not Connected.");
                 }
             }
             catch (Exception ex)
