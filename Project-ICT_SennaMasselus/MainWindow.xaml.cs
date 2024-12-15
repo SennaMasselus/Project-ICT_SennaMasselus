@@ -68,6 +68,8 @@ namespace Project_ICT_SennaMasselus
             if (port.IsOpen)
             {
                 Disconnect();
+                RemoveImage();
+                ShowImage_EmptyGlass();
                 MessageBox.Show("Succesfully Disconnected.");
             }
             else
