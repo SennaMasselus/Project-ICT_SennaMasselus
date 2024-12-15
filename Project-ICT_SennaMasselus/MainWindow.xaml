@@ -1,0 +1,82 @@
+﻿<Window x:Class="Project_ICT_SennaMasselus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_ICT_SennaMasselus"
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="MainWindow" Height="400" Width="400"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Canvas Background="DimGray" Width="90" HorizontalAlignment="Left">
+            <TextBlock x:Name="ConnectionTextBlock" Text="" TextAlignment="Center" Foreground="Red" Width="80" Height="20" Margin="5,125" Background="Gray"></TextBlock>
+            <ListBox x:Name="lstports" SelectionChanged="lstports_SelectionChanged" Width="80" Height="200" Margin="5,157,0,0"/>
+            <!-- pretty button to start the pump -->
+            <Button x:Name="FlowButton" Content="StartFlow" Height="30" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="8,15,0,0" Click="FlowButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="#4287f5" BorderBrush="LightCoral" BorderThickness="1.5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#3a76e0" BorderBrush="LightCoral" BorderThickness="1.5">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- pretty button to start the pump -->
+            <Button x:Name="Disconnect_Button" Content="Disconnect" Height="30" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="8,60,0,0" Click="Disconnect_btn_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="#ed0c26" BorderBrush="LightCoral" BorderThickness="1.5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#d60b22" BorderBrush="LightCoral" BorderThickness="1.5">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Canvas>
+        
+        
+        <!-- Show COM ports Button -->
+        <Canvas x:Name="Interface" Width="295" Margin="0,0,0,0" HorizontalAlignment="Right" Background="LightGray">
+            <ProgressBar x:Name="pbTijd" Height="10" Margin="50,20,0,0" VerticalAlignment="Top" Width="189" Maximum="15"/>
+            
+        </Canvas>
+    </Grid>
+</Window>
